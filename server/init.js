@@ -10,7 +10,8 @@ exports.StateGpio1 = 11;
 exports.StateGpio2 = 12;
 exports.StateGpio3 = 13;
 exports.StateGpio4 = 14;
-exports.StateGpio5 = gpio5.read();
+exports.StateGpio5 = 15
+// gpio5.read();
 
 // gpio5.read()
   // .then((state)=>{

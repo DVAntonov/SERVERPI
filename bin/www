@@ -107,26 +107,26 @@ console.log(init.StateGpio5);
 //    });
 
 //подключаем socket.io
-//var io = require('socket.io').listen(server);
+var io = require('socket.io').listen(server);
 
 //информируем о подключениях
-//io.on('connection', function (socket) {
+io.on('connection', function (socket) {
   console.log('We have new connection!');
-//});
+});
 //посылаем данные всем клиентам
-//function send_test_data() {
-//  var test_message;
-//  if (gpio5.read() == 0) {
-//     test_message = "gpio_off";
-//  }
-//  else {
-//   test_message = "gpio_on";
-//  }
-//  io.emit ('test_data', {message: test_message});
-//}
+function send_test_data() {
+var test_message;
+if (init.StateGpio5 == 0) {
+test_message = "gpio_off";
+  }
+  else {
+   test_message = "gpio_on";
+  }
+  io.emit ('test_data', {message: test_message});
+}
 
 //устанавливаем интервал отправки
-//setInterval (send_test_data, 1000);
+setInterval (send_test_data, 1000);
 
 //освобождаем gpio
 //function unexportOnClose() {
