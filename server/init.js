@@ -18,7 +18,7 @@ exports.StateGpio4 = 14;
 
 gpio5.read()
   .then((state)=>{
-    exports.StateGpio5 = state
+    exports.StateGpio5 = state;
         console.log(state); //state of pin 5
   });
 
