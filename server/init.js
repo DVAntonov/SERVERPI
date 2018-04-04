@@ -14,10 +14,11 @@ exports.StateGpio1 = 11;
 exports.StateGpio2 = 12;
 exports.StateGpio3 = 13;
 exports.StateGpio4 = 14;
-exports.StateGpio5 = gpio5.read();
+//exports.StateGpio5 = gpio5.read();
 
 gpio5.read()
   .then((state)=>{
+    exports.StateGpio5 = state
         console.log(state); //state of pin 5
   });
 
