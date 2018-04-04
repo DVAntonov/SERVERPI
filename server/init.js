@@ -6,11 +6,12 @@ const Gpio = require('orange-pi-gpio');
 let gpio5 = new Gpio({pin:5});
 
 //let StateGpio1=12;
-exports.StateGpio1=11;
-exports.StateGpio2=12;
-exports.StateGpio3=13;
-exports.StateGpio4=14;
-exports.StateGpio5=gpio5.read();
+exports.StateGpio1 = 11;
+exports.StateGpio2 = 12;
+exports.StateGpio3 = 13;
+exports.StateGpio4 = 14;
+exports.StateGpio5 = gpio5.read(state);
+
 // gpio5.read()
   // .then((state)=>{
   //      console.log(state); //state of pin 5
