@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<link rel='stylesheet' href='/stylesheets/style.css' /
+  <head>
+  <meta charset="utf-8">
+    <title><%= title %></title>
+  </head>
+  <body>
+<div class="header1">
+  <div class="mid">
+  <h1>
+    Orange PI PC Plus
+  </h1>
+  <p>Страница управления GPIO одноплатного PC</p>
+  </div>
+</div>
+<div class="header2"></div>
+<div class="MENU">
+  <div class="mid">
+    <div class="mid2">
+      <a href="#"> GPIO </a>
+      <a href="#"> Видео </a>
+     </div>
+    </div>
+</div>
+<div class="data">
+  <div class="mid">
+    <script src='/socket.io/socket.io.js'></script>
+<script>
+  var socket = io();
+  socket.on('test_data', function (data) {
+    document.getElementById('test').innerHTML = data.message;
+  });
+</script>
+ <p id='test'>JavaScript can change HTML content.</p>
+  </div>
+</div>
+<!-- /*data.message*/-->
+  </body>
+</html>

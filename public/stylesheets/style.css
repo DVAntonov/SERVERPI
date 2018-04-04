@@ -1,0 +1,18 @@
+
+body {
+  background: #efefef; margin: 0; padding: 0
+}
+a {text-decoration: none; font: 20px/32px Arial, Tahoma; }
+h1 {margin: 0; padding: 20px 20px 5px 5px}
+/* структура*/
+div.header1 {
+  height: auto; background: #141414;
+  font: 14px/16px Arial, Tahoma; text-align: center;
+  margin: 0; padding: 0
+}
+div.header2 {
+  height: 50px; width: auto; background: #fff;
+  }
+div.mid { width: 700px; margin: 0 auto;padding: 10px 10px 1px 1px; background: #A9A9A9}
+div.mid2 { width: 150px; margin: 0 auto;padding: 5px 5px 1px 1px; background: #A9A9A9}
+div.MENU { margin: 0 auto; height: auto; background: #efefef; }
