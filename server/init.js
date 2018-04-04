@@ -3,7 +3,7 @@ const Gpio = require('orange-pi-gpio');
 //let gpio1 = new Gpio({pin:1});
 //let gpio2 = new Gpio({pin:2});
 //let gpio3 = new Gpio({pin:4});
-const gpio5 = new Gpio({pin:5});
+let gpio5 = new Gpio({pin:5});
 
 //let StateGpio1=12;
 exports.StateGpio1 = 11;
