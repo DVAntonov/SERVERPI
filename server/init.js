@@ -8,6 +8,7 @@ let gpio5 = new Gpio({pin:5});
 
 gpio5.write(0);
 
+
 //let StateGpio1=12;
 exports.StateGpio1 = 11;
 exports.StateGpio2 = 12;
@@ -15,10 +16,10 @@ exports.StateGpio3 = 13;
 exports.StateGpio4 = 14;
 exports.StateGpio5 = gpio5.read();
 
-// gpio5.read()
-  // .then((state)=>{
-  //      console.log(state); //state of pin 5
-  //  });
+gpio5.read()
+  .then((state)=>{
+        console.log(state); //state of pin 5
+  });
 
 //подключаем socket.io
 //*var io = require('socket.io').listen(server);
