@@ -6,7 +6,7 @@ const Gpio = require('orange-pi-gpio');
 let gpio5 = new Gpio({pin:5});
 
 
-gpio5.write(0);
+gpio5.write(1);
 
 
 //let StateGpio1=12;
