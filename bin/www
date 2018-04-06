@@ -104,7 +104,7 @@ gpio1.write(1);
 gpio2.write(1);
 gpio3.write(1);
 gpio4.write(1);
-gpio5.write(1);
+gpio5.write(0);
 
 //let StateGpio1=12;
 //StateGpio1 = 11;
