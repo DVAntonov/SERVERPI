@@ -90,24 +90,28 @@ function onListening() {
 }
 
 console.log('Server running on 8080');
-
-const init = require('../server/init.js');
-
-console.log(init.StateGpio1);
-console.log(init.StateGpio2);
-console.log(init.StateGpio3);
-console.log(init.StateGpio4);
-console.log(init.StateGpio5);
-//const Gpio = require('orange-pi-gpio');
-
-//let gpio5 = new Gpio({pin:5});
-// gpio5.read()
-  // .then((state)=>{
-  //      console.log(state); //state of pin 5
-//    });
-
+const Gpio = require('orange-pi-gpio');
 //подключаем socket.io
-var io = require('socket.io').listen(server);
+const io = require('socket.io').listen(server);
+//Инициализируем ПИны
+let gpio1 = new Gpio({pin:1});
+let gpio2 = new Gpio({pin:2});
+let gpio3 = new Gpio({pin:3});
+let gpio4 = new Gpio({pin:4});
+let gpio5 = new Gpio({pin:5});
+
+gpio1.write(1);
+gpio2.write(1);
+gpio3.write(1);
+gpio4.write(1);
+gpio5.write(1);
+
+//let StateGpio1=12;
+//StateGpio1 = 11;
+//StateGpio2 = 12;
+//StateGpio3 = 13;
+//StateGpio4 = 14;
+
 
 //информируем о подключениях
 io.on('connection', function (socket) {
@@ -116,14 +120,24 @@ io.on('connection', function (socket) {
 //посылаем данные всем клиентам
 function send_test_data() {
 var test_message;
-if (init.StateGpio5 == 0) {
-test_message = "gpio_off";
+if (gpio5.read() == 0) {
+test_message = "off";
   }
   else {
-   test_message = "gpio_on";
+   test_message = "on";
   }
   io.emit ('test_data', {message: test_message});
 }
+
+//gpio5.read()
+  //  .then((state)=>{
+    //    console.log(state); //state of pin 5
+  //  });
+
+
+
+
+
 
 //устанавливаем интервал отправки
 setInterval (send_test_data, 1000);
