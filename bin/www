@@ -135,7 +135,7 @@ function send_test_data() {
                   message1 = "on";
                   console.log(message1);
                     }
-              io.emit ('test_data', {message: message1});
+              io.emit ('StateGpio1', {message: message1});
             });
             gpio2.read()
                 .then((state)=>{
@@ -148,7 +148,7 @@ function send_test_data() {
                           message2 = "on";
                           console.log(message2);
                             }
-                      io.emit ('test_data', {message: message2});
+                      io.emit ('StateGpio2', {message: message2});
                     });
                     gpio3.read()
                         .then((state)=>{
@@ -161,7 +161,7 @@ function send_test_data() {
                                   message3 = "on";
                                   console.log(message3);
                                     }
-                              io.emit ('test_data', {message: message3});
+                              io.emit ('StateGpio3', {message: message3});
                             });
                       gpio4.read()
                                 .then((state)=>{
@@ -174,7 +174,7 @@ function send_test_data() {
                                           message4 = "on";
                                           console.log(message4);
                                             }
-                                      io.emit ('test_data', {message: message4});
+                                      io.emit ('StateGpio4', {message: message4});
                                     });
                       gpio5.read()
                                         .then((state)=>{
@@ -187,28 +187,9 @@ function send_test_data() {
                                                   message5 = "on";
                                                   console.log(message5);
                                                     }
-                                              io.emit ('test_data', {message: message5});
+                                              io.emit ('StateGpio5', {message: message5});
                                             });
                       };
-
-
-//if (gpio5.read() == 0) {
-//test_message = "off";
-//  }
-//  else {
-   //test_message = "on";
-//  }
-//  io.emit ('test_data', {message: test_message});
-//}
-
-//gpio5.read()
-  //  .then((state)=>{
-    //    console.log(state); //state of pin 5
-  //  });
-
-
-
-
 
 
 //устанавливаем интервал отправки

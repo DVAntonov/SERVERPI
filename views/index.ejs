@@ -28,11 +28,27 @@
     <script src='/socket.io/socket.io.js'></script>
 <script>
   var socket = io();
-  socket.on('test_data', function (data) {
-    document.getElementById('test').innerHTML = data.message;
+  socket.on('StateGpio1', function (data) {
+    document.getElementById('StGpio1').innerHTML = data.message;
+  });
+  socket.on('StateGpio2', function (data) {
+    document.getElementById('StGpio2').innerHTML = data.message;
+  });
+  socket.on('StateGpio3', function (data) {
+    document.getElementById('StGpio3').innerHTML = data.message;
+  });
+  socket.on('StateGpio4', function (data) {
+    document.getElementById('StGpio4').innerHTML = data.message;
+  });
+    socket.on('StateGpio5', function (data) {
+    document.getElementById('StGpio5').innerHTML = data.message;
   });
 </script>
- <p id='test'>JavaScript can change HTML content.</p>
+ <p id='StGpio1'>Состояние GPIO-1 неизвестно</p>
+ <p id='StGpio2'>Состояние GPIO-2 неизвестно</p>
+ <p id='StGpio3'>Состояние GPIO-3 неизвестно</p>
+ <p id='StGpio3'>Состояние GPIO-4 неизвестно</p>
+ <p id='StGpio4'>Состояние GPIO-5 неизвестно</p>
   </div>
 </div>
 <!-- /*data.message*/-->
