@@ -94,6 +94,7 @@ console.log('Server running on 8080');
 const Gpio = require('orange-pi-gpio');
 //подключаем socket.io
 const io = require('socket.io').listen(server);
+const socket = io();
 //Инициализируем ПИны
 let gpio1 = new Gpio({pin:1});
 let gpio2 = new Gpio({pin:2});
