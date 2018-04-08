@@ -119,20 +119,76 @@ io.on('connection', function (socket) {
 });
 //посылаем данные всем клиентам
 function send_test_data() {
-    var test_message;
-    gpio5.read()
+    var message1;
+    var message2;
+    var message3;
+    var message4;
+    var message5;
+    gpio1.read()
         .then((state)=>{
               console.log(state);//state of pin 5
               if (state == 0) {
-                  test_message = "off";
-                  console.log(test_message);
+                  message1 = "off";
+                  console.log(message1);
                               }
               else {
-                  test_message = "on";
-                  console.log(test_message);
+                  message1 = "on";
+                  console.log(message1);
                     }
-              io.emit ('test_data', {message: test_message});
+              io.emit ('test_data', {message: message1});
             });
+            gpio2.read()
+                .then((state)=>{
+                      console.log(state);//state of pin 5
+                      if (state == 0) {
+                          message2 = "off";
+                          console.log(message2);
+                                      }
+                      else {
+                          message2 = "on";
+                          console.log(message2);
+                            }
+                      io.emit ('test_data', {message: message2});
+                    });
+                    gpio3.read()
+                        .then((state)=>{
+                              console.log(state);//state of pin 5
+                              if (state == 0) {
+                                  message3 = "off";
+                                  console.log(message3);
+                                              }
+                              else {
+                                  message3 = "on";
+                                  console.log(message3);
+                                    }
+                              io.emit ('test_data', {message: message3});
+                            });
+                      gpio4.read()
+                                .then((state)=>{
+                                      console.log(state);//state of pin 5
+                                      if (state == 0) {
+                                          message4 = "off";
+                                          console.log(message4);
+                                                      }
+                                      else {
+                                          message4 = "on";
+                                          console.log(message4);
+                                            }
+                                      io.emit ('test_data', {message: message4});
+                                    });
+                      gpio5.read()
+                                        .then((state)=>{
+                                              console.log(state);//state of pin 5
+                                              if (state == 0) {
+                                                  message5 = "off";
+                                                  console.log(message5);
+                                                              }
+                                              else {
+                                                  message5 = "on";
+                                                  console.log(message5);
+                                                    }
+                                              io.emit ('test_data', {message: message5});
+                                            });
                       };
 
 
