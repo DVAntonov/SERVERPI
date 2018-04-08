@@ -196,7 +196,7 @@ setInterval (send_test_data, 1000);
 // Получаем от клиента сигнал управления
 io.on('ReqSetGPIO', function (data) {
   console.log(data);
-  switch (data) {
+  switch (data.message) {
     case 1:
       gpio1.write(1);
       break;
