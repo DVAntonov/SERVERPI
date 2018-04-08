@@ -119,15 +119,31 @@ io.on('connection', function (socket) {
 });
 //посылаем данные всем клиентам
 function send_test_data() {
-var test_message;
-if (gpio5.read() == 0) {
-test_message = "off";
-  }
-  else {
-   test_message = "on";
-  }
-  io.emit ('test_data', {message: test_message});
-}
+    var test_message;
+    gpio5.read()
+        .then((state)=>{
+              console.log(state);//state of pin 5
+              if (state == 0) {
+                  test_message = "off";
+                  console.log(test_message);
+                              }
+              else {
+                  test_message = "on";
+                  console.log(test_message);
+                    }
+              io.emit ('test_data', {message: test_message});
+            });
+                      };
+
+
+//if (gpio5.read() == 0) {
+//test_message = "off";
+//  }
+//  else {
+   //test_message = "on";
+//  }
+//  io.emit ('test_data', {message: test_message});
+//}
 
 //gpio5.read()
   //  .then((state)=>{
