@@ -211,6 +211,7 @@ socket.on('ReqSetGPIO', function (data) {
     case 5:
       gpio5.write(1);
       break;
+    };
 });
 
 //освобождаем gpio
