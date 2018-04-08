@@ -49,6 +49,18 @@
  <p id='StGpio3'>Состояние GPIO-3 неизвестно</p>
  <p id='StGpio4'>Состояние GPIO-4 неизвестно</p>
  <p id='StGpio5'>Состояние GPIO-5 неизвестно</p>
+
+ <button onclick="SetGpio (1)">ВКЛ 1</button>
+ <button onclick="SetGpio (2)">ВКЛ 2</button>
+ <button onclick="SetGpio (3)">ВКЛ 3</button>
+ <script>
+ function SetGpio(GPIO) {
+   io.emit ('ReqSetGPIO', {message: GPIO});
+  GPIO = "Включен GPIO" + GPIO ;
+  document.getElementById('SwSetGpio').innerHTML = GPIO;
+  }
+ </script>
+ <p id="SwSetGpio">Пока ничем не управляли</p>
   </div>
 </div>
 <!-- /*data.message*/-->

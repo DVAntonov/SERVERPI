@@ -90,6 +90,7 @@ function onListening() {
 }
 
 console.log('Server running on 8080');
+
 const Gpio = require('orange-pi-gpio');
 //подключаем socket.io
 const io = require('socket.io').listen(server);
@@ -100,17 +101,13 @@ let gpio3 = new Gpio({pin:3});
 let gpio4 = new Gpio({pin:4});
 let gpio5 = new Gpio({pin:5});
 
-gpio1.write(1);
-gpio2.write(1);
-gpio3.write(1);
-gpio4.write(1);
-gpio5.write(1);
 
-//let StateGpio1=12;
-//StateGpio1 = 11;
-//StateGpio2 = 12;
-//StateGpio3 = 13;
-//StateGpio4 = 14;
+//Выходы приводим в исходное состояние 0
+gpio1.write(0);
+gpio2.write(0);
+gpio3.write(0);
+gpio4.write(0);
+gpio5.write(0);
 
 
 //информируем о подключениях
@@ -126,66 +123,66 @@ function send_test_data() {
     var message5;
     gpio1.read()
         .then((state)=>{
-              console.log(state);//state of pin 5
+              //console.log(state);//state of pin 5
               if (state == 0) {
                   message1 = "off";
-                  console.log(message1);
+                  //console.log(message1);
                               }
               else {
                   message1 = "on";
-                  console.log(message1);
+                  //console.log(message1);
                     }
               io.emit ('StateGpio1', {message: message1});
             });
             gpio2.read()
                 .then((state)=>{
-                      console.log(state);//state of pin 5
+                      //console.log(state);//state of pin 5
                       if (state == 0) {
                           message2 = "off";
-                          console.log(message2);
+                          //console.log(message2);
                                       }
                       else {
                           message2 = "on";
-                          console.log(message2);
+                          //console.log(message2);
                             }
                       io.emit ('StateGpio2', {message: message2});
                     });
                     gpio3.read()
                         .then((state)=>{
-                              console.log(state);//state of pin 5
+                              //console.log(state);//state of pin 5
                               if (state == 0) {
                                   message3 = "off";
-                                  console.log(message3);
+                                  //console.log(message3);
                                               }
                               else {
                                   message3 = "on";
-                                  console.log(message3);
+                                  //console.log(message3);
                                     }
                               io.emit ('StateGpio3', {message: message3});
                             });
                       gpio4.read()
                                 .then((state)=>{
-                                      console.log(state);//state of pin 5
+                                      //console.log(state);//state of pin 5
                                       if (state == 0) {
                                           message4 = "off";
-                                          console.log(message4);
+                                          //console.log(message4);
                                                       }
                                       else {
                                           message4 = "on";
-                                          console.log(message4);
+                                          //console.log(message4);
                                             }
                                       io.emit ('StateGpio4', {message: message4});
                                     });
                       gpio5.read()
                                         .then((state)=>{
-                                              console.log(state);//state of pin 5
+                                              //console.log(state);//state of pin 5
                                               if (state == 0) {
                                                   message5 = "off";
-                                                  console.log(message5);
+                                                  //console.log(message5);
                                                               }
                                               else {
                                                   message5 = "on";
-                                                  console.log(message5);
+                                                  //console.log(message5);
                                                     }
                                               io.emit ('StateGpio5', {message: message5});
                                             });
@@ -193,7 +190,28 @@ function send_test_data() {
 
 
 //устанавливаем интервал отправки
-setInterval (send_test_data, 10000);
+setInterval (send_test_data, 1000);
+
+// Получаем от клиента сигнал управления
+socket.on('ReqSetGPIO', function (data) {
+  console.log(data);
+  switch (data) {
+    case 1:
+      gpio1.write(1);
+      break;
+    case 2:
+      gpio2.write(1);
+      break;
+    case 3:
+      gpio3.write(1);
+      break;
+    case 4:
+      gpio4.write(1);
+      break;
+    case 5:
+      gpio5.write(1);
+      break;
+});
 
 //освобождаем gpio
 //function unexportOnClose() {
