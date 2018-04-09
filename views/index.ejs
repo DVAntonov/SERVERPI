@@ -56,7 +56,8 @@
  <script>
  var socket = io();
  function SetGpio(GPIO) {
-   socket.emit ('ReqSetGPIO', GPIO);
+   socket.emit ('ReqSetGPIO', {message: GPIO});
+   console.log("Включен GPIO" + GPIO);
   GPIO = "Включен GPIO" + GPIO ;
   document.getElementById('SwSetGpio').innerHTML = GPIO;
   }
