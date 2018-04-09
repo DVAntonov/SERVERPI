@@ -54,7 +54,7 @@
  <button onclick="SetGpio (2)">ВКЛ 2</button>
  <button onclick="SetGpio (3)">ВКЛ 3</button>
  <script>
- var socket = io();
+ //var socket = io();
  function SetGpio(GPIO) {
    socket.emit ('ReqSetGPIO', {message: GPIO});
    console.log("Включен GPIO" + GPIO);
