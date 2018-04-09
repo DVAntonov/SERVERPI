@@ -116,7 +116,8 @@ io.on('connection', function (socket) {
   console.log('We have new connection!');
   io.on('ReqSetGPIO', function (data) {
     console.log('data');
-    switch (data) {
+
+  /*  switch (data) {
       case 1:
         gpio1.write(1);
         break;
@@ -132,7 +133,7 @@ io.on('connection', function (socket) {
       case 5:
         gpio5.write(1);
         break;
-      };
+      };*/
   });
 });
 //посылаем данные всем клиентам
