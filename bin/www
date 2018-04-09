@@ -106,7 +106,7 @@ let gpio5 = new Gpio({pin:5});
 //Выходы приводим в исходное состояние 0
 gpio1.write(0);
 gpio2.write(0);
-gpio3.write(0);
+gpio3.write(1);
 gpio4.write(0);
 gpio5.write(0);
 
