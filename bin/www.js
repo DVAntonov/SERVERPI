@@ -91,7 +91,7 @@ function onListening() {
 
 console.log('Server running on 8080');
 
-const Gpio = require('orange-pi-gpio');
+const Gpio = require('../server/gpio');
 //подключаем socket.io
 const io = require('socket.io').listen(server);
 
