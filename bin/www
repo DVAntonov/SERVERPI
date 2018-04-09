@@ -114,6 +114,26 @@ gpio5.write(0);
 //информируем о подключениях
 io.on('connection', function (socket) {
   console.log('We have new connection!');
+  io.on('ReqSetGPIO', function (data) {
+    console.log('data');
+    switch (data) {
+      case 1:
+        gpio1.write(1);
+        break;
+      case 2:
+        gpio2.write(1);
+        break;
+      case 3:
+        gpio3.write(1);
+        break;
+      case 4:
+        gpio4.write(1);
+        break;
+      case 5:
+        gpio5.write(1);
+        break;
+      };
+  });
 });
 //посылаем данные всем клиентам
 function send_test_data() {
@@ -194,7 +214,7 @@ function send_test_data() {
 setInterval (send_test_data, 1000);
 
 // Получаем от клиента сигнал управления
-io.on('ReqSetGPIO', function (data) {
+/*io.on('ReqSetGPIO', function (data) {
   console.log('data');
   switch (data) {
     case 1:
@@ -213,7 +233,7 @@ io.on('ReqSetGPIO', function (data) {
       gpio5.write(1);
       break;
     };
-});
+});*/
 
 //освобождаем gpio
 //function unexportOnClose() {
