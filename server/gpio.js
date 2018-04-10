@@ -12,6 +12,7 @@ class MockGpio {
 
     read() {
         return Promise.resolve(1)
+
     }
 
     write(value) {

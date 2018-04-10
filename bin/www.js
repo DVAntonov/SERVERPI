@@ -145,10 +145,10 @@ function send_test_data() {
     var message5;
     gpio1.read()
         .then((state)=>{
-              //console.log(state);//state of pin 5
+               console.log(state);//state of pin 5
               if (state == 0) {
                   message1 = "off";
-                  //console.log(message1);
+                  console.log(message1);
                               }
               else {
                   message1 = "on";
@@ -174,7 +174,7 @@ function send_test_data() {
                               //console.log(state);//state of pin 5
                               if (state == 0) {
                                   message3 = "off";
-                                  //console.log(message3);
+                                //  console.log(message3);
                                               }
                               else {
                                   message3 = "on";

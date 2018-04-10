@@ -4,10 +4,13 @@
   "private": true,
   "scripts": {
     "start:dev": "node ./bin/www",
-    "start": "NODE_ENV=production node ./bin/www"
+    "start": "NODE_ENV='production' node ./bin/www",
+    "start:w": "set NODE_ENV=production&& node ./bin/www",
+    "start:ks": "cross-env NODE_ENV=production  node ./bin/www"
   },
   "dependencies": {
     "cookie-parser": "~1.4.3",
+    "cross-env": "^5.1.4",
     "debug": "~2.6.9",
     "ejs": "~2.5.7",
     "express": "~4.16.0",
