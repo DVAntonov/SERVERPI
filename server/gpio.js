@@ -3,6 +3,7 @@ class MockGpio {
         this.pin = pin;
         this.mode = mode;
         this.init().then(()=> { ready(); });
+        this.val;
     }
 
     init() {
@@ -11,19 +12,21 @@ class MockGpio {
     }
 
     read() {
-        return Promise.resolve(1)
+        return Promise.resolve(this.val)
 
     }
 
     write(value) {
-        console.log(`gpio write ${this.pin} ${value}`)
-        return Promise.resolve()
+        console.log(`gpio write ${this.pin} ${value}`);
+        this.val = value;
+        //console.log(this.val);        
+        return Promise.resolve();
+
     }
 }
 
 const gpioLib = process.env.NODE_ENV === 'production'
     ? require('orange-pi-gpio')
     : MockGpio
-
 
 module.exports = gpioLib;

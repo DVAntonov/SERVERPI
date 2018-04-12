@@ -19,8 +19,7 @@
   <div class="mid">
     <div class="mid2">
       <a href="#"> GPIO </a>
-      <a href="#"> Видео </a>
-     </div>
+         </div>
     </div>
 </div>
 <div class="data">
@@ -28,36 +27,94 @@
     <script src='/socket.io/socket.io.js'></script>
 <script>
   var socket = io();
+  let val1;
+  let val2;
+  let val3;
+  let val4;
+  let val5;
   socket.on('StateGpio1', function (data) {
+    if (data.message == 'on') {
+      document.getElementById('SetGpio1').innerHTML = "ВЫКЛ";
+      val1 = 0;
+    }
+    else {
+      document.getElementById('SetGpio1').innerHTML = "ВКЛ";
+      val1 = 1;
+    }
     document.getElementById('StGpio1').innerHTML = data.message;
   });
   socket.on('StateGpio2', function (data) {
+    if (data.message == 'on') {
+      document.getElementById('SetGpio2').innerHTML = "ВЫКЛ";
+      val2 = 0;
+    }
+    else {
+      document.getElementById('SetGpio2').innerHTML = "ВКЛ";
+      val2 = 1;
+    }
     document.getElementById('StGpio2').innerHTML = data.message;
   });
   socket.on('StateGpio3', function (data) {
+    if (data.message == 'on') {
+      document.getElementById('SetGpio3').innerHTML = "ВЫКЛ";
+      val3 = 0;
+    }
+    else {
+      document.getElementById('SetGpio3').innerHTML = "ВКЛ";
+      val3 = 1;
+    }
     document.getElementById('StGpio3').innerHTML = data.message;
   });
   socket.on('StateGpio4', function (data) {
+    if (data.message == 'on') {
+      document.getElementById('SetGpio4').innerHTML = "ВЫКЛ";
+      val4 = 0;
+    }
+    else {
+      document.getElementById('SetGpio4').innerHTML = "ВКЛ";
+      val4 = 1;
+    }
     document.getElementById('StGpio4').innerHTML = data.message;
   });
     socket.on('StateGpio5', function (data) {
+      if (data.message == 'on') {
+        document.getElementById('SetGpio5').innerHTML = "ВЫКЛ";
+        val5 = 0;
+      }
+      else {
+        document.getElementById('SetGpio5').innerHTML = "ВКЛ";
+        val5 = 1;
+      }
     document.getElementById('StGpio5').innerHTML = data.message;
   });
 </script>
+ <p>Состояние GPIO-1</p>
  <p id='StGpio1'>Состояние GPIO-1 неизвестно</p>
- <p id='StGpio2'>Состояние GPIO-2 неизвестно</p>
- <p id='StGpio3'>Состояние GPIO-3 неизвестно</p>
- <p id='StGpio4'>Состояние GPIO-4 неизвестно</p>
- <p id='StGpio5'>Состояние GPIO-5 неизвестно</p>
+ <button id='SetGpio1' onclick="SetGpio (1, val1)">...</button>
 
- <button onclick="SetGpio (1)">ВКЛ 1</button>
- <button onclick="SetGpio (2)">ВКЛ 2</button>
- <button onclick="SetGpio (3)">ВКЛ 3</button>
+ <p>Состояние GPIO-2</p>
+ <p id='StGpio2'>Состояние GPIO-2 неизвестно</p>
+ <button id='SetGpio2' onclick="SetGpio (2, val2)">...</button>
+
+ <p>Состояние GPIO-3</p>
+ <p id='StGpio3'>Состояние GPIO-3 неизвестно</p>
+<button id='SetGpio3' onclick="SetGpio (3, val3)">...</button>
+
+ <p>Состояние GPIO-4</p>
+ <p id='StGpio4'>Состояние GPIO-4 неизвестно</p>
+ <button id='SetGpio4' onclick="SetGpio (4, val4)">...</button>
+
+ <p>Состояние GPIO-5</p>
+ <p id='StGpio5'>Состояние GPIO-5 неизвестно</p>
+ <button id='SetGpio5' onclick="SetGpio (5, val5)">...</button>
+
+
+
  <script>
  //var socket = io();
- function SetGpio(GPIO) {
-   socket.emit('ReqSetGPIO', {message: GPIO});
-   console.log("Включен GPIO" + GPIO);
+ function SetGpio(GPIO, val) {
+   socket.emit('ReqSetGPIO', {message: GPIO, val: val });
+   console.log("Переключен GPIO" + GPIO);
   GPIO = "Включен GPIO" + GPIO ;
   document.getElementById('SwSetGpio').innerHTML = GPIO;
   }

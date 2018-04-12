@@ -104,7 +104,7 @@ let gpio5 = new Gpio({pin:5});
 
 
 //Выходы приводим в исходное состояние 0
-gpio1.write(0);
+gpio1.write(1);
 gpio2.write(0);
 gpio3.write(1);
 gpio4.write(0);
@@ -114,26 +114,25 @@ gpio5.write(0);
 //информируем о подключениях
 io.on('connection', function (socket) {
   console.log('We have new connection!');
-  io.on('ReqSetGPIO', function (data) {
-    console.log('data');
-
-  /*  switch (data) {
+  socket.on('ReqSetGPIO', function (data) {
+    console.log(data.message);
+    switch (data.message) {
       case 1:
-        gpio1.write(1);
+        gpio1.write(data.val);
         break;
       case 2:
-        gpio2.write(1);
+        gpio2.write(data.val);
         break;
       case 3:
-        gpio3.write(1);
+        gpio3.write(data.val);
         break;
       case 4:
-        gpio4.write(1);
+        gpio4.write(data.val);
         break;
       case 5:
-        gpio5.write(1);
+        gpio5.write(data.val);
         break;
-      };*/
+      };
   });
 });
 //посылаем данные всем клиентам
@@ -145,10 +144,10 @@ function send_test_data() {
     var message5;
     gpio1.read()
         .then((state)=>{
-               console.log(state);//state of pin 5
+              // console.log(state);//state of pin 5
               if (state == 0) {
                   message1 = "off";
-                  console.log(message1);
+                //  console.log(message1);
                               }
               else {
                   message1 = "on";
